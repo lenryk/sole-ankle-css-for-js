@@ -24,17 +24,18 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         </LeftColumn>
         <Header>
           <Title>Running</Title>
-          <Select
+          <StyledSelect
+            as={Select}
             label="Sort"
             value={sortId}
             onChange={(ev) => setSortId(ev.target.value)}
           >
             <option value="newest">Newest Releases</option>
             <option value="price">Price</option>
-          </Select>
+          </StyledSelect>
         </Header>
         <Spacer size={34} />
-        {/* <ShoeGrid /> */}
+        <ShoeGrid />
       </MainColumn>
     </Wrapper>
   );
@@ -42,13 +43,21 @@ const ShoeIndex = ({ sortId, setSortId }) => {
 
 const Wrapper = styled.div``;
 
-const LeftColumn = styled.div``;
+const LeftColumn = styled.div`
+  flex-basis: 250px;
+`;
 
 const MainColumn = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
-const Header = styled.header``;
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledSelect = styled.div``;
 
 const Title = styled.h2`
   font-size: 1.5rem;
