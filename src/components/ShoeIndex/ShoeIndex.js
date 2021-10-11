@@ -13,51 +13,53 @@ const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
       <MainColumn>
-        <LeftColumn>
-          <Breadcrumbs>
-            <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-            <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-            <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
-          </Breadcrumbs>
-          <Spacer size={42} />
-          <ShoeSidebar />
-        </LeftColumn>
         <Header>
           <Title>Running</Title>
-          <StyledSelect
-            as={Select}
+          <Select
             label="Sort"
             value={sortId}
             onChange={(ev) => setSortId(ev.target.value)}
           >
             <option value="newest">Newest Releases</option>
             <option value="price">Price</option>
-          </StyledSelect>
+          </Select>
         </Header>
         <Spacer size={34} />
         <ShoeGrid />
       </MainColumn>
+      <LeftColumn>
+        <Breadcrumbs>
+          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+          <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
+        </Breadcrumbs>
+        <Spacer size={42} />
+        <ShoeSidebar />
+      </LeftColumn>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 32px;
+  align-items: baseline;
+`;
 
 const LeftColumn = styled.div`
-  flex-basis: 250px;
+  flex-basis: 248px;
 `;
 
 const MainColumn = styled.div`
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 `;
 
 const Header = styled.header`
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
 `;
-
-const StyledSelect = styled.div``;
 
 const Title = styled.h2`
   font-size: 1.5rem;
